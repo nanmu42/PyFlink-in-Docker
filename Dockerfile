@@ -9,8 +9,8 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linu
     echo "conda activate base" >> ~/.bashrc
 # use bash(with --login) instead of sh to make ~/.bashrc works
 SHELL ["/bin/bash", "--login", "-c"]
-COPY docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
 # now conda base env is activated by default
 RUN pip install apache-flink==1.13.1 && \
     pip cache purge
+COPY docker-entrypoint.sh python.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
