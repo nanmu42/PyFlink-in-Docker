@@ -1,4 +1,4 @@
-FROM flink:1.13.1
+FROM flink:1.13.2
 # copy from https://hub.docker.com/r/continuumio/miniconda3/dockerfile
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
@@ -10,7 +10,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linu
 # use bash(with --login) instead of sh to make ~/.bashrc works
 SHELL ["/bin/bash", "--login", "-c"]
 # now conda base env is activated by default
-RUN pip install apache-flink==1.13.1 && \
+RUN pip install apache-flink==1.13.2 && \
     pip cache purge
 COPY docker-entrypoint.sh python.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
